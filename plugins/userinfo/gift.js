@@ -30,7 +30,7 @@ exports.run = {
             date: new Date * 1
          })
          let teks = `❏  *G I F T*\n\n`
-         teks += `“Berhasil melakukan gift ${Func.formatNumber(nominal)} limit kepada *@${target.replace(/@.+/g, '')}*\n\n`
+         teks += `Berhasil melakukan gift ${Func.formatNumber(nominal)} limit kepada *@${target.replace(/@.+/g, '')}*\n\n`
          teks += `➠ *Sisa Limit* : ${Func.formatNumber(global.db.users[m.sender].limit)}\n`
          teks += `➠ *SN* : ${sn}`
          client.reply(m.chat, teks, m)
@@ -58,7 +58,7 @@ exports.run = {
             date: new Date * 1
          })
          let teks = `❏  *G I F T*\n\n`
-         teks += `“Berhasil melakukan gift ${Func.formatNumber(nominal)} limit kepada *@${target.replace(/@.+/g, '')}*\n\n`
+         teks += `Berhasil melakukan gift ${Func.formatNumber(nominal)} limit kepada *@${target.replace(/@.+/g, '')}*\n\n`
          teks += `➠ *Sisa Limit* : ${Func.formatNumber(global.db.users[m.sender].limit)}\n`
          teks += `➠ *SN* : ${sn}`
          client.reply(m.chat, teks, m)

@@ -21,6 +21,7 @@ exports.run = {
          caption += `	◦ *Pacar* : ${typeof user.taken != 'undefined' && user.taken ? '@' + user.pasangan.split('@')[0] : '-'}\n`
          caption += `	◦ *Level* : ${Func.level(user.point)[0]}\n`
          caption += `	◦ *Limit* : ${Func.formatNumber(user.limit)}\n`
+         caption += `	◦ *Tabungan* : ${Func.formatNumber(user.tabungan)}\n`
          caption += `	◦ *Saldo* : ${Func.formatNumber(user.uang)}\n\n`
          caption += `❏  *U S E R - S T A T U S*\n\n`
          caption += `	◦ *Blocked* : ${(blocked ? '√' : '×')}\n`

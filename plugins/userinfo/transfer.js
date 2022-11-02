@@ -34,7 +34,7 @@ exports.run = {
             date: new Date * 1
          })
          let teks = `❏  *T R A N S F E R*\n\n`
-         teks += `“Berhasil melakukan transfer Rp. ${Func.formatNumber(nominal)} kepada *@${target.replace(/@.+/g, '')}*\n\n`
+         teks += `Berhasil melakukan transfer Rp. ${Func.formatNumber(nominal)} kepada *@${target.replace(/@.+/g, '')}*\n\n`
          teks += `➠ *Pajak* : ${Func.formatNumber(ppn)} [25%]\n`
          teks += `➠ *Sisa uang* : ${Func.formatNumber(global.db.users[m.sender].uang)}\n`
          teks += `➠ *SN* : ${sn}`
@@ -66,7 +66,7 @@ exports.run = {
             date: new Date * 1
          })
          let teks = `❏  *T R A N S F E R*\n\n`
-         teks += `“Berhasil melakukan transfer Rp. ${Func.formatNumber(nominal)} kepada *@${target.replace(/@.+/g, '')}*\n\n`
+         teks += `Berhasil melakukan transfer Rp. ${Func.formatNumber(nominal)} kepada *@${target.replace(/@.+/g, '')}*\n\n`
          teks += `➠ *Pajak* : ${Func.formatNumber(ppn)} [25%]\n`
          teks += `➠ *Sisa uang* : ${Func.formatNumber(global.db.users[m.sender].uang)}\n`
          teks += `➠ *SN* : ${sn}`
