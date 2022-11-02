@@ -621,6 +621,36 @@ module.exports = class Function {
       return daysF + "D " + hoursF + "H " + minutesF + "M"
    }
    
+   /* Leveling
+    * @param {Integer} xp/point
+    */ 
+   level = (xp) => {
+      var XPAsli = xp
+      var level = 1
+      while (xp > 1) {
+         xp /= 2
+         if (xp < 1) {
+            level == level
+         } else {
+            level += 1
+         }
+      }
+      var XPLevel = 1
+      while (XPAsli >= XPLevel) {
+         XPLevel = XPLevel + XPLevel
+      }
+      var sisaXP = XPLevel - XPAsli
+      if (sisaXP == 0) sisaXP = XPLevel + XPLevel
+      let kurang = XPLevel - sisaXP
+      return [level, XPLevel, sisaXP, kurang]
+   }
+   
+   randomInt = (min, max) => {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1)) + min
+   }
+   
    /* Timeout
     * @param ()
     */ 
