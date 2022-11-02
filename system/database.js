@@ -15,7 +15,7 @@ module.exports = (m) => {
       if (!isNumber(user.limit)) user.limit = global.limit
       if (!('premium' in user)) user.premium = false
       if (!isNumber(user.expired)) user.expired = 0
-      if (!isNumber(user.point)) user.uang = 0
+      if (!isNumber(user.uang)) user.uang = 0
       if (!isNumber(user.lastseen)) user.lastseen = 0
       if (!isNumber(user.hit)) user.hit = 0
       if (!isNumber(user.spam)) user.spam = 0
