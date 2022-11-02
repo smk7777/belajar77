@@ -5,6 +5,8 @@ module.exports = (m) => {
       if (!isNumber(user.afk)) user.afk = -1
       if (!('afkReason' in user)) user.afkReason = ''
       if (!('banned' in user)) user.banned = false
+      if (!('taken' in user)) user.taken = false
+      if (!('pasangan' in user)) user.pasangan = ''
       if (!isNumber(user.banTemp)) user.banTemp = 0
       if (!isNumber(user.banTimes)) user.banTimes = 0
       if (!isNumber(user.limit)) user.limit = global.limit
@@ -20,6 +22,8 @@ module.exports = (m) => {
      	afk: -1,
          afkReason: '',
          banned: false,
+         taken: false,
+         pasangan: ",
          banTemp: 0,
          banTimes: 0,
          limit: global.limit,

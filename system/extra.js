@@ -406,7 +406,7 @@ Socket = (...args) => {
       return client.sendMessage(jid, btnMsg)
    }
 
-   client.sendButton = async (jid, source, text, footer, quoted, buttons = [], type) => {
+   client.sendButton = async (jid, source, text, footer, quoted, buttons = [], type, opts) => {
       let {
          file,
          mime
@@ -416,6 +416,24 @@ Socket = (...args) => {
             jpegThumbnail: await Func.fetchBuffer(source)
          },
          headerType: 6
+      } : (type && type.document) ? {
+         document: {
+            url: file
+         },
+         headerType: 3,
+         fileName: opts && opts.fileName ? opts.fileName : 'Simple WhatsApp BOT',
+         mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+         fileLength: '500000000000000000',
+         contextInfo: {
+            externalAdReply: {
+               mediaType: 1,
+               title: opts && opts.title ? opts.title : '© melbot',
+               renderLargerThumbnail: true,
+               thumbnail: opts && opts.thumbnail ? opts.thumbnail : await Func.fetchBuffer(global.db.setting.cover),
+               thumbnailUrl: 'https://telegra.ph/?id=' + Func.makeId(8),
+               sourceUrl: global.db.setting.link
+            }
+         }
       } : /video/.test(mime) ? {
          video: {
             url: file
@@ -434,8 +452,9 @@ Socket = (...args) => {
       }
       let buttonMessage = {
          caption: text,
-         footerText: footer,
+         footer: footer,
          buttons: buttons,
+         ...opts,
          ...options,
          mentions: parseMention(text)
       }
