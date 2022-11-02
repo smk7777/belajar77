@@ -7,6 +7,9 @@ module.exports = (m) => {
       if (!('banned' in user)) user.banned = false
       if (!('taken' in user)) user.taken = false
       if (!('pasangan' in user)) user.pasangan = ''
+      if (!('tabungan' in user)) user.tabungan = 0
+      if (!('history_nabung' in user)) user.history_nabung = []
+      if (!('transfer_history' in user)) user.transfer_history = []
       if (!isNumber(user.banTemp)) user.banTemp = 0
       if (!isNumber(user.banTimes)) user.banTimes = 0
       if (!isNumber(user.limit)) user.limit = global.limit
@@ -24,6 +27,9 @@ module.exports = (m) => {
          banned: false,
          taken: false,
          pasangan: ",
+         tabungan: 0,
+         history_nabung: [],
+         transfer_history: [],
          banTemp: 0,
          banTimes: 0,
          limit: global.limit,
