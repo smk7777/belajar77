@@ -16,14 +16,15 @@ exports.run = {
          let now = new Date() * 1
          let lastseen = (user.lastseen == 0) ? 'Never' : Func.toDate(now - user.lastseen)
          let usebot = (user.usebot == 0) ? 'Never' : Func.toDate(now - user.usebot)
-         let caption = `乂  *U S E R - P R O F I L E*\n\n`
+         let caption = `❏  *U S E R - P R O F I L E*\n\n`
          caption += `	◦ *Name* : ${m.pushName}\n`
+         caption += `	◦ *Pacar* : ${typeof user.taken != 'undefined' && user.taken ? '@' + user.pasangan.split('@')[0] : '-'}\n`
+         caption += `	◦ *Level* : ${Func.level(user.point)[0]}\n`
          caption += `	◦ *Limit* : ${Func.formatNumber(user.limit)}\n`
-         caption += `	◦ *Hitstat* : ${Func.formatNumber(user.hit)}\n`
-         caption += `	◦ *Warning* : ${((m.isGroup) ? (typeof global.db.groups[m.chat].member[m.sender] != 'undefined' ? global.db.groups[m.chat].member[m.sender].warning : 0) + ' / 5' : user.warning + ' / 5')}\n\n`
-         caption += `乂  *U S E R - S T A T U S*\n\n`
+         caption += `	◦ *Saldo* : ${Func.formatNumber(user.uang)}\n\n`
+         caption += `❏  *U S E R - S T A T U S*\n\n`
          caption += `	◦ *Blocked* : ${(blocked ? '√' : '×')}\n`
-         caption += `	◦ *Banned* : ${(new Date - user.banTemp < global.timer) ? Func.toTime(new Date(user.banTemp + global.timer) - new Date()) + ' (' + ((global.timer / 1000) / 60) + ' min)' : user.banned ? '√' : '×'}\n`
+         caption += `	◦ *Banned* : ${user.banned ? '√' : '×'}\n`
          caption += `	◦ *Use In Private* : ${(Object.keys(global.db.chats).includes(m.sender) ? '√' : '×')}\n`
          caption += `	◦ *Premium* : ${(user.premium ? '√' : '×')}\n`
          caption += `	◦ *Expired* : ${user.expired == 0 ? '-' : Func.timeReverse(user.expired - new Date() * 1)}\n\n`
