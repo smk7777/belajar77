@@ -26,7 +26,7 @@ module.exports = (m) => {
          afkReason: '',
          banned: false,
          taken: false,
-         pasangan: ",
+         pasangan: '',
          tabungan: 0,
          history_nabung: [],
          transfer_history: [],
