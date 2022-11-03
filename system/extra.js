@@ -174,6 +174,35 @@ Socket = (...args) => {
          }
       }
    }
+   
+   client.sendMessageModify2 = async (jid, text, quoted, properties, options = {}) => {
+      await client.sendPresenceUpdate('composing', jid)
+      if (properties.thumbnail) {
+         var {
+            file
+         } = await Func.getFile(properties.thumbnail)
+      }
+      return client.generateMessage(jid, {
+         text,
+         ...options,
+         contextInfo: {
+            mentionedJid: parseMention(text),
+            externalAdReply: {
+               title: properties.title || global.db.setting.label,
+               body: properties.body || null,
+               mediaType: 1,
+               previewType: 0,
+               showAdAttribution: properties.ads && properties.ads ? true : false,
+               renderLargerThumbnail: properties.largeThumb && properties.largeThumb ? true : false,
+               thumbnail: properties.thumbnail ? await Func.fetchBuffer(file) : await Func.fetchBuffer(global.db.setting.cover),
+               thumbnailUrl: 'https://telegra.ph/?id=' + Func.makeId(8),
+               sourceUrl: properties.url || ''
+            }
+         }
+      }, {
+         quoted
+      })
+   }
 
    client.copyMsg = (jid, message, text = '', sender = client.user.id, options = {}) => {
       let copy = message.toJSON()
