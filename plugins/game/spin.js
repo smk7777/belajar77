@@ -1,28 +1,19 @@
 exports.run = {
-   usage: ['spin', 'spinall'],
+   usage: ['spin'],
    async: async (m, {
       client,
-      args,
-      command
+      args
    }) => {
+      if (!global.db.setting.games) return client.reply(m.chat, Func.texted('bold', `Fitur game dinonaktifkan sementara oleh owner.`), m)
+      if (!global.db.groups[m.chat].game) return client.reply(m.chat, Func.texted('bold', `Fitur game tidak diaktifkan di grup ini.`), m)
       let user = global.db.users[m.sender]
-      if (command == 'spinall') {
-         let reward = Func.randomInt(100, ((1 / 100) * (user.uang * 2)))
-         user.uang = global.db.users.uang
-         user.uang += reward
-         let last = user.uang
-         let teks = `❏  *S P I N - R E S U L T*\n\n`
-         teks += `	*- ${Func.formatNumber(user.uang)}*\n`
-         teks += `	*+ ${Func.formatNumber(reward)}*\n\n`
-         teks += `• *Total* : ${Func.formatNumber(last)}\n\n`
-         teks += `*NB : “Anti-Spam jeda ${global.cooldown} detik untuk eksekusi selanjutnya.”*`
-         client.reply(m.chat, teks, m)
-      } else {
-         if (!args || !args[0] || args[0].startsWith('0')) return client.reply(m.chat, Func.texted('bold', `🚩 Berikan argumen berupa nominal uang untuk dispin.`), m)
-         if (isNaN(args[0])) return client.reply(m.chat, Func.example(isPrefix, command, '10000'), m)
-         if (args[0] > user.uang) return client.reply(m.chat, Func.texted('bold', `🚩 uangmu tidak cukup untuk melakukan spin sebanyak ${Func.formatNumber(args[0])} uang.`), m)
-         if (args[0] < 1000) return client.reply(m.chat, Func.texted('bold', `🚩 Tidak bisa melakukan spin dengan nominal dibawah 1000 uang.`), m)
-         user.uang -= args[0]
+      if (user.uang > 500000) return client.reply(m.chat, Func.texted('bold', `Poin Anda telah mencapai 500K, silakan mainkan permainan`), m)
+      if (!args || !args[0] || args[0].startsWith('0')) return client.reply(m.chat, Func.texted('bold', `Berikan poin nominal yang akan diputar.`), m)
+      if (isNaN(args[0])) return client.reply(m.chat, Func.texted('bold', `Poin harus berupa angka`), m)
+      if (args[0] > user.uang) return client.reply(m.chat, Func.texted('bold', `Poin Anda tidak cukup untuk diputar ${Func.formatNumber(args[0])}`), m)
+      if (args[0] < 1000) return client.reply(m.chat, Func.texted('bold', `Tidak dapat berputar di bawah 1000 poin.`), m)
+      user.uang -= args[0]
+      setTimeout(async () => {
          let reward = Func.randomInt(100, args[0] * 3)
          user.uang += reward
          let last = user.uang
@@ -30,11 +21,10 @@ exports.run = {
          teks += `	*- ${Func.formatNumber(args[0])}*\n`
          teks += `	*+ ${Func.formatNumber(reward)}*\n\n`
          teks += `• *Total* : ${Func.formatNumber(last)}\n\n`
-         teks += `*NB : “Anti-Spam jeda ${global.cooldown} detik untuk eksekusi selanjutnya.”*`
+         teks += `*NB : “Anti-Spam jeda 5 detik setelah putaran sebelumnya, BOT tidak akan merespon, harap ulangi setelah 5 detik berlalu.”*`
          client.reply(m.chat, teks, m)
-      }
+      }, 1000)
    },
    group: true,
-   limit: true,
-   game: true
+   limit: 5
 }
