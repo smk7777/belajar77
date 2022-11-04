@@ -8,7 +8,7 @@ exports.run = {
       let id = m.chat,
          timeout = 60000
       if (id in client.whoami) return client.reply(m.chat, '*^ soal ini belum terjawab!*', client.whoami[id][0])
-      let json = Func.jsonRandom('./media/json/whoami.json')
+      let json = Func.jsonRandom('./media/whoami.json')
       let teks = `❏  *W H O A M I*\n\n`
       teks += `${json.pertanyaan}\n\n`
       teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`

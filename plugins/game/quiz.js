@@ -9,7 +9,7 @@ exports.run = {
       let id = m.chat,
          timeout = 180000
       if (id in client.quiz) return client.reply(m.chat, '*^ soal ini belum terjawab!*', client.quiz[id][0])
-      let json = Func.jsonRandom('./media/json/quiz.json')
+      let json = Func.jsonRandom('./media/quiz.json')
       let teks = `❏  *Q U I Z*\n\n`
       teks += `${json.pertanyaan.replace(json.pertanyaan.charAt(0), json.pertanyaan.charAt(0).toUpperCase())} ??\n\n`
       teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`
