@@ -1,5 +1,5 @@
 exports.run = {
-   usage: ['antidelete', 'antilink', 'antivirtex', 'left', 'filter', 'localonly', 'welcome'],
+   usage: ['antidelete', 'antilink', 'antivirtex', 'left', 'filter', 'localonly', 'game', 'games', 'welcome'],
    use: 'on / off',
    category: 'admin tools',
    async: async (m, {
@@ -20,7 +20,7 @@ exports.run = {
          description: `[ Status : OFF ]`
       }]
       let type = command.toLowerCase()
-      if (!isBotAdmin && /antilink|antivirtex|filter|localonly/.test(type)) return client.reply(m.chat, global.status.botAdmin, m)
+      if (!isBotAdmin && /antilink|antivirtex|filter|localonly|game|games/.test(type)) return client.reply(m.chat, global.status.botAdmin, m)
       if (!args || !args[0]) return client.sendList(m.chat, '', `🚩 *Current status* : [ ${setting[type] ? 'ON' : 'OFF'} ]`, '', 'Tap!', [{
          rows
       }], m)
