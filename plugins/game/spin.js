@@ -8,7 +8,7 @@ exports.run = {
       let user = global.db.users[m.sender]
       if (command == 'spinall') {
          let reward = Func.randomInt(100, ((1 / 100) * (user.uang * 2)))
-         user.uang = 0
+         user.uang = global.db.users.uang
          user.uang += reward
          let last = user.uang
          let teks = `❏  *S P I N - R E S U L T*\n\n`
