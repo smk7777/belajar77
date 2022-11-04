@@ -4,14 +4,12 @@ exports.run = {
       client,
       args
    }) => {
-      if (!global.db.setting.games) return client.reply(m.chat, Func.texted('bold', `Fitur game dinonaktifkan sementara oleh owner.`), m)
-      if (!global.db.groups[m.chat].game) return client.reply(m.chat, Func.texted('bold', `Fitur game tidak diaktifkan di grup ini.`), m)
       let user = global.db.users[m.sender]
-      if (user.uang > 500000) return client.reply(m.chat, Func.texted('bold', `Poin Anda telah mencapai 500K, silakan mainkan permainan`), m)
-      if (!args || !args[0] || args[0].startsWith('0')) return client.reply(m.chat, Func.texted('bold', `Berikan poin nominal yang akan diputar.`), m)
+      if (user.uang > 500000000) return client.reply(m.chat, Func.texted('bold', `Uang Anda telah mencapai 500JT, silakan mainkan permainan`), m)
+      if (!args || !args[0] || args[0].startsWith('0')) return client.reply(m.chat, Func.texted('bold', `Berikan nominal yang akan diputar.`), m)
       if (isNaN(args[0])) return client.reply(m.chat, Func.texted('bold', `Poin harus berupa angka`), m)
-      if (args[0] > user.uang) return client.reply(m.chat, Func.texted('bold', `Poin Anda tidak cukup untuk diputar ${Func.formatNumber(args[0])}`), m)
-      if (args[0] < 1000) return client.reply(m.chat, Func.texted('bold', `Tidak dapat berputar di bawah 1000 poin.`), m)
+      if (args[0] > user.uang) return client.reply(m.chat, Func.texted('bold', `Uang Anda tidak cukup untuk diputar ${Func.formatNumber(args[0])}`), m)
+      if (args[0] < 10000) return client.reply(m.chat, Func.texted('bold', `Tidak dapat berputar di bawah 10rb`), m)
       user.uang -= args[0]
       setTimeout(async () => {
          let reward = Func.randomInt(100, args[0] * 3)
