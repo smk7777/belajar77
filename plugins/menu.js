@@ -1,7 +1,8 @@
 exports.run = {
    usage: ['menu', 'bot'],
    async: async (m, {
-      client
+      client,
+      isPrefix
    }) => {
       client.sendMessageModify(m.chat, info(), m, {
             title: global.botname,
