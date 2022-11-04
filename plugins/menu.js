@@ -13,13 +13,30 @@ exports.run = {
             let id = m.chat
             if (id in client.menu) {
                global.statistic[command].hitstat -= 1
-               return client.reply(m.chat, `Hai @${m.sender.split`@`[0]} ^\nUntuk menghindari spam, menu ditampilkan *setiap 3 menit* dan Anda dapat mencoba menggulir ke atas.`, client.menu[id][0])
+               return client.reply(m.chat, `Sorry @${m.sender.split`@`[0]} ^\nTo avoiding spam, menu is displayed *once every 3 minutes* and you can try to scroll up.`, client.menu[id][0])
             }
             client.menu[id] = [
-               await client.sendMessageModify2(m.chat, await menu(m, readmore, global.db.setting, isPrefix), m, {
-            largeThumb: true,
-            thumbnail: global.db.setting.cover
-            }),
+               await client.sendTemplateButton(m.chat, global.setting.cover, menu(isPrefix, m, readmore, setting), '', [{
+                     urlButton: {
+                        displayText: `Script`,
+                        url: `https://github.com/neoxr/neoxr-bot`
+                     }
+                  },
+                  {
+                     quickReplyButton: {
+                        displayText: 'Botstat',
+                        id: `${isPrefix}stat`
+                     }
+                  },
+                  {
+                     quickReplyButton: {
+                        displayText: 'Hitstat',
+                        id: `${isPrefix}hitstat`
+                     }
+                  }
+               ], {
+                  location: true
+               }),
                setTimeout(() => {
                   delete client.menu[id]
                }, 180000)
@@ -45,9 +62,6 @@ let menu = (prefix, m, readmore, setting) => {
    return `
 Hi ${m.pushName || Beib} 🍟
 
-“${setting.msg}”
-
-Mode : ${setting.groupmode ? '*Group Only*' : '*Public*'}
 ${readmore}
 ❏  *P O I N T & L I M I T*
 
