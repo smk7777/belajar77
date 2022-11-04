@@ -8,7 +8,7 @@ exports.run = {
       let id = m.chat,
          timeout = 120000
       if (id in client.whatsong) return client.reply(m.chat, '*^ soal ini belum terjawab!*', client.whatsong[id][0])
-      let json = Func.jsonRandom('./media/json/whatsong.json')
+      let json = Func.jsonRandom('./media/image/whatsong.json')
       let teks = `❏  *T E B A K - L A G U*\n\n`
       teks += `Apa judul dari lagu berikut ini ?\n\n`
       teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`

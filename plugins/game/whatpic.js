@@ -10,7 +10,7 @@ exports.run = {
       if (id in client.whatpic) {
          return client.reply(m.chat, '*^ soal ini belum terjawab!*', client.whatpic[id][0])
       } else {
-         let json = Func.jsonRandom('./media/whatpic.json')
+         let json = Func.jsonRandom('./media/image/whatpic.json')
          let teks = `❏  *T E B A K - G A M B A R*\n\n`
          teks += `${json.deskripsi}\n\n`
          teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`

@@ -8,7 +8,7 @@ exports.run = {
       let id = m.chat,
          timeout = 60000
       if (id in client.riddle) return client.reply(m.chat, '*^ soal ini belum terjawab!*', client.riddle[id][0])
-      let json = Func.jsonRandom('./media/riddle.json') 
+      let json = Func.jsonRandom('./media/image/riddle.json') 
       let teks = `❏  *R I D D L E*\n\n`
       teks += `${json.pertanyaan}\n\n`
       teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`
