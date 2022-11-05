@@ -657,6 +657,29 @@ module.exports = class Function {
       return Math.floor(Math.random() * (max - min + 1)) + min
    }
    
+   
+   h2k = (str) => {
+      try {
+         let SI_POSTFIXES = ['', 'RB', 'JT', 'M', 'T', 'KD', 'KN']
+         let dot = str.match(/./g)
+         let split = str.split('.')
+         let zero = parseInt(split[1].substring(1, -split[1].length))
+         let postfix
+         for (let i = 0; i < SI_POSTFIXES.length; i++)
+            if (dot.filter(v => v == '.').length == i) postfix = SI_POSTFIXES[i]
+         switch (true) {
+            case zero != 0:
+               var output = split[0] + '.' + zero + postfix
+               break
+            default:
+               var output = split[0] + postfix
+         }
+         return output
+      } catch {
+         return str
+      }
+   }
+   
    /* Timeout
     * @param ()
     */ 
