@@ -16,7 +16,7 @@ exports.run = {
                let json = JSON.parse(JSON.stringify(client.tebaklirik[id][1]))
                if (['Timeout', ''].includes(body)) return !0
                if (body.toLowerCase() == json.jawaban.toLowerCase()) {
-                  await client.sendSticker(m.chat, await Func.fetchBuffer('./media/sticker/true.webp'), m, {
+                  await client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/true.webp'), m, {
                      packname: global.db.setting.sk_pack,
                      author: global.db.setting.sk_author
                   }).then(() => {
@@ -26,12 +26,12 @@ exports.run = {
                      delete client.tebaklirik[id]
                   })
                } else {
-                  if (users.point == 0) return client.sendSticker(m.chat, await Func.fetchBuffer('./media/sticker/false.webp'), m, {
+                  if (users.point == 0) return client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/false.webp'), m, {
                      packname: global.db.setting.sk_pack,
                      author: global.db.setting.sk_author
                   })
                   users.point < reward ? users.point = 0 : users.point -= reward
-                  await client.sendSticker(m.chat, await Func.fetchBuffer('./media/sticker/false.webp'), m, {
+                  await client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/false.webp'), m, {
                      packname: global.db.setting.sk_pack,
                      author: global.db.setting.sk_author
                   }).then(() => {
