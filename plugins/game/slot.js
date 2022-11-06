@@ -5,10 +5,10 @@ exports.run = {
    }) => {
       let user = global.db.users[m.sender]
       let level = Func.level(global.db.users[m.sender].point)[0]
-      if (user.point == 0) return client.reply(m.chat, Func.texted('bold', `🚩 Kamu tidak punya point untuk bermain game slot.`), m)
-      if (user.point < 1000) return client.reply(m.chat, Func.texted('bold', `🚩 Untuk bermain minimal kamu harus mempunyai 1000 point.`), m)
+      if (user.uang == 0) return client.reply(m.chat, Func.texted('bold', `🚩 Kamu tidak punya point untuk bermain game slot.`), m)
+      if (user.uang < 1000) return client.reply(m.chat, Func.texted('bold', `🚩 Untuk bermain minimal kamu harus mempunyai 1000 point.`), m)
       let reward = Func.randomInt(global.min_reward, global.max_reward)
-      let emojis = ["🔮", "🔥", "🍓"]
+      let emojis = ["💍", "🔥", "🍋"]
       let a = Math.floor(Math.random() * emojis.length)
       let b = Math.floor(Math.random() * emojis.length)
       let c = Math.floor(Math.random() * emojis.length)
@@ -32,17 +32,17 @@ exports.run = {
       }
       let end
       if (a == b && b == c) {
-         end = `JACKPOT! *+${Func.formatNumber(reward)} point*`
-         user.point += reward
+         end = `JACKPOT BOS! *+${Func.formatNumber(reward)}*`
+         user.uang += reward
       } else if (a == b || a == c || b == c) {
          end = `Hampir Beruntung! *+3 Limits*`
          user.limit += 3
       } else {
-         end = `LOSE! *-${Func.formatNumber(reward)} point*`
-         if (reward > user.point) {
-            user.point = 0
+         end = `KALAH HAHA! *-${Func.formatNumber(reward)}*`
+         if (reward > user.uang) {
+            user.uang = 0
          } else {
-            user.point -= reward
+            user.uang -= reward
          }
       }
       let teks = `❏  *S L O T S*\n\n`
