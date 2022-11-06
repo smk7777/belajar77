@@ -1,5 +1,5 @@
 // Owner number
-global.owner = '62895800444100'
+global.owner = '6285156972228'
 // Owner name
 global.owner_name = 'Acuy ( melbot )'
 // Maximum upload file size limit (Default : 50 MB)
