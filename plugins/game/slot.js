@@ -4,7 +4,7 @@ exports.run = {
       client
    }) => {
       let user = global.db.users[m.sender]
-      let level = Func.level(global.db.users[m.sender].point)[0]
+      let level = Func.level(global.db.users[m.sender].uang)[0]
       if (user.uang == 0) return client.reply(m.chat, Func.texted('bold', `🚩 Kamu tidak punya point untuk bermain game slot.`), m)
       if (user.uang < 1000) return client.reply(m.chat, Func.texted('bold', `🚩 Untuk bermain minimal kamu harus mempunyai 1000 point.`), m)
       let reward = Func.randomInt(global.min_reward, global.max_reward)
