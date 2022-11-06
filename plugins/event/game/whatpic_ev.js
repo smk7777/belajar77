@@ -21,16 +21,16 @@ exports.run = {
                      author: global.db.setting.sk_author
                   }).then(() => {
                      client.reply(m.chat, `*+ ${Func.formatNumber(reward)}*`, m)
-                     users.point += reward
+                     users.uang += reward
                      clearTimeout(client.whatpic[id][2])
                      delete client.whatpic[id]
                   })
                } else {
-                  if (users.point == 0) return client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/false.webp'), m, {
+                  if (users.uang == 0) return client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/false.webp'), m, {
                      packname: global.db.setting.sk_pack,
                      author: global.db.setting.sk_author
                   })
-                  users.point < reward ? users.point = 0 : users.point -= reward
+                  users.uang < reward ? users.uang = 0 : users.uang -= reward
                   await client.sendSticker(m.chat, await Func.fetchBuffer('./media/image/false.webp'), m, {
                      packname: global.db.setting.sk_pack,
                      author: global.db.setting.sk_author

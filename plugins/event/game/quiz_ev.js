@@ -10,26 +10,26 @@ exports.run = {
          var reward = Func.randomInt(global.min_reward, global.max_reward)
          client.quiz = client.quiz ? client.quiz : {}
          if (m.quoted && m.quoted.sender != client.decodeJid(client.user.id)) return
-         if (m.quoted && /Sisa|quizclue/i.test(m.quoted.text) && users.point >= 10000) {
+         if (m.quoted && /Sisa|quizclue/i.test(m.quoted.text) && users.uang >= 10000) {
             if (!(id in client.quiz) && /Sisa|quizclue/i.test(m.quoted.text)) return client.reply(m.chat, Func.texted('bold', `Soal tersebut telah berakhir, silahkan kirim _${prefixes[0]}quiz_ untuk mendapatkan soal baru.`), m)
             if (body && !Func.socmed(body)) {
                let json = JSON.parse(JSON.stringify(client.quiz[id][1]))
                const answer = body.toLowerCase()
                if ((client.quiz[id][3]).includes(answer)) return client.reply(m.chat, `💀 *"${answer}"* sudah terjawab!\n\nSilahkan cari jawaban lain, denda : *- ${Func.formatNumber(reward)}*`, m).then(() => {
-                  if (reward > users.point) {
-                     users.point = 0
+                  if (reward > users.uang) {
+                     users.uang = 0
                   } else {
-                     users.point -= reward
+                     users.uang -= reward
                   }
                })
                if (!json.jawaban.includes(answer)) return client.reply(m.chat, `Jawaban mu salah!, *- ${Func.formatNumber(reward)}*`, m).then(() => {
-                  if (reward > users.point) {
-                     users.point = 0
+                  if (reward > users.uang) {
+                     users.uang = 0
                   } else {
-                     users.point -= reward
+                     users.uang -= reward
                   }
                })
-               users.point += reward
+               users.uang += reward
                client.quiz[id][3].push(answer)
                if (!client.quiz[id][4][m.sender]) {
                   client.quiz[id][4][m.sender] = {

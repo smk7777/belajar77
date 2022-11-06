@@ -13,7 +13,7 @@ exports.run = {
             if (!(id in client.math) && /Berapa hasil dari/i.test(m.quoted.text)) return client.reply(m.chat, Func.texted('bold', `Soal tersebut telah berakhir, silahkan kirim _${prefixes[0]}math_ untuk mendapatkan soal baru.`), m)
             let math = JSON.parse(JSON.stringify(client.math[id][1]))
             if (m.text == math.result) {
-               users.point += math.bonus
+               users.uang += math.bonus
                clearTimeout(client.math[id][3])
                delete client.math[id]
                await client.sendSticker(m.chat, await Func.fetchBuffer('./media/sticker/true.webp'), m, {

@@ -27,7 +27,7 @@ exports.run = {
                   thumbnail: 'https://telegra.ph/file/287cbe90fe5263682121d.jpg',
                   largeThumb: true
                }).then(() => {
-                  users.point < reward ? users.point = 0 : users.point -= reward
+                  users.uang < reward ? users.uang = 0 : users.uang -= reward
                   clearTimeout(client.bomb[id][2])
                   delete client.bomb[id]
                })
@@ -49,7 +49,7 @@ exports.run = {
                      thumbnail: 'https://telegra.ph/file/308a4f10cc4576a90b4a0.jpg',
                      largeThumb: true
                   }).then(() => {
-                     users.point += reward
+                     users.uang += reward
                      clearTimeout(client.bomb[id][2])
                      delete client.bomb[id]
                   })
@@ -62,7 +62,7 @@ exports.run = {
                   teks += `Timeout : [ *${((timeout / 1000) / 60)} menit* ]\n`
                   teks += `Kotak berisi bom tidak terbuka : (+ *${Func.formatNumber(reward)}*)`
                   client.reply(m.chat, teks, m).then(() => {
-                     users.point += reward
+                     users.uang += reward
                   })
                }
             }
