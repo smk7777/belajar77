@@ -19,14 +19,14 @@ exports.run = {
                      users.limit -= limit
                   } else return client.reply(m.chat, Func.texted('bold', `🚩 Your limit is not enough to use this feature.`), m)
                }
-               client.sendReact(m.chat, '🕒', m.key)
+               client.reply(m.chat, global.status.getdata, m)
                let old = new Date()
                Func.hitstat('tiktok', m.sender)
                links.map(async link => {
                   let json = await Api.tiktok(Func.ttFixed(link))
                   if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
-                  client.sendButton(m.chat, json.data.video, `If you want to get the *original sound* press the button below.\n🍟 *Fetching* : ${((new Date - old) * 1)} ms`, ``, m, [{
-                     buttonId: `${prefixes[0]}tikmp3 ${link}`,
+                  client.sendButton(m.chat, json.data.video, `${json.caption}\n\n🍟 *Fetching* : ${((new Date - old) * 1)} ms`, ``, m, [{
+                     buttonId: `${prefixes[0]}tomp3 ${json.data.video}`,
                      buttonText: {
                         displayText: 'Backsound'
                      },
