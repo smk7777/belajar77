@@ -13,8 +13,8 @@ exports.run = {
             if (!afkTime || afkTime < 0) continue
             let reason = is_user.afkReason || ''
             if (!m.fromMe) {
-               client.reply(m.chat, `*Away From Keyboard* : @${jid.split('@')[0]}\n• *Reason* : ${reason ? reason : '-'}\n• *During* : [ ${Func.toTime(new Date - afkTime)} ]`, m).then(async () => {
-                  client.reply(jid, `Someone from *${await (await client.groupMetadata(m.chat)).subject}*'s group, tagged or mention you.\n\n• *Sender* : @${m.sender.split('@')[0]}`, m).then(async () => {
+               client.reply(m.chat, `*Dia Sedang AFK* : @${jid.split('@')[0]}\n• *Alasan* : ${reason ? reason : '-'}\n• *Selama* : [ ${Func.toTime(new Date - afkTime)} ]`, m).then(async () => {
+                  client.reply(jid, `Seseorang dari *${await (await client.groupMetadata(m.chat)).subject}*, tag atau reply pesan kamu.\n\n• *Pengirim* : @${m.sender.split('@')[0]}`, m).then(async () => {
                      await client.copyNForward(jid, m)
                   })
                })
