@@ -34,7 +34,50 @@ module.exports = class Scraper {
       })
    }
    
-   /* URL Shortener
+   tiktok = (url) => {
+      return new Promise(async (resolve, reject) => {
+         try {
+            let html = await (await axios.get('https://tikdown.org/')).data
+            let soup = cheerio.load(html)
+            let token = soup('meta[name="csrf-token"]').attr('content')
+            let header = {
+               headers: {
+                  "Accept": "application/json, text/javascript, */*; q=0.01",
+                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                  "Referer": "https://tikdown.org/",
+                  "Referrer-Policy": "strict-origin-when-cross-origin",
+                  "X-CSRF-TOKEN": token
+               }
+            }
+            let form = new URLSearchParams
+            form.append('url', url)
+            form.append('_token', token)
+            let json = await (await axios.post('https://tikdown.org/getAjax', form, header)).data
+            if (!json.status) return resolve({
+               creator: global.creator,
+               status: false
+            })
+            let $ = cheerio.load(json.html)
+            let data = {
+               video: $($('a')[0]).attr('href'),
+               audio: $($('a')[1]).attr('href')
+            }
+            resolve({
+               creator: global.creator,
+               status: true,
+               data
+            })
+         } catch (e) {
+            console.log(e)
+            return resolve({
+               creator: global.creator,
+               status: false
+            })
+         }
+      })
+   }   
+
+    /* URL Shortener
     * @param {String} url
     */
    shorten = (url) => {
