@@ -23,7 +23,7 @@ exports.run = {
                let old = new Date()
                Func.hitstat('tiktok', m.sender)
                links.map(async link => {
-                  let json = await scrap.tiktok(Func.ttFixed(link))
+                  let json = await Api.tiktok(Func.ttFixed(link))
                   if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
                   client.sendButton(m.chat, json.data.video, `${json.caption}\n\n🍟 *Fetching* : ${((new Date - old) * 1)} ms`, ``, m, [{
                      buttonId: `${prefixes[0]}tomp3 ${json.data.video}`,
