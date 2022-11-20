@@ -14,6 +14,8 @@ global.timer = 1800000
 global.evaluate_chars = ['=>', '~>', '<', '>', '$']
 // Country code that will be automatically blocked by the system, when sending messages in private chat
 global.blocks = ['91', '92', '212']
+global.min_reward = 10000000
+global.max_reward = 100000000
 // Put target jid to forward friends story
 global.forwards = '62895800444100@c.us'
 // Get neoxr apikey by registering at https://api.neoxr.my.id
