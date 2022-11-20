@@ -13,7 +13,7 @@ exports.run = {
          let old = new Date()
          let json = await Api.tiktok(Func.ttFixed(args[0]))
          if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
-         if (command == 'tiktok') return client.sendButton(m.chat, json.data.video, `dari : ${json.author}\n${json.caption}\n\n*Mengambil* : ${((new Date - old) * 1)} detik`, ``, m, [{
+         if (command == 'tiktok') return client.sendButton(m.chat, json.data.video, `${json.caption}\n\n*Mengambil* : ${((new Date - old) * 1)} detik`, ``, m, [{
             buttonId: `${isPrefix}extract ${json.data.video}`,
             buttonText: {
                displayText: 'Audio'
