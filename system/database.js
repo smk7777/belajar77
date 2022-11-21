@@ -104,6 +104,8 @@ module.exports = (m) => {
   	if (!('setmenu' in setting)) setting.setmenu = 1
   	if (!('autodownload' in setting)) setting.autodownload = true
   	if (!('debug' in setting)) setting.debug = false
+      if (!isNumber(setting.messageSent)) setting.messageSent = 10
+      if (!isNumber(setting.messageReceive)) setting.messageReceive = 10
       if (!('chatbot' in setting)) setting.chatbot = true
       if (!('error' in setting)) setting.error = []
       if (!('pluginDisable' in setting)) setting.pluginDisable = []
@@ -128,6 +130,8 @@ module.exports = (m) => {
          autodownload: true,
          chatbot: true,
          debug: false,
+         messageSent: 10,      
+         messageReceive: 10,
          error: [],
          pluginDisable: [],
          groupmode: false,
