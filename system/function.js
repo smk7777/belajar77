@@ -683,13 +683,21 @@ module.exports = class Function {
    /* Timeout
     * @param ()
     */ 
-   greeting = () => {
-      let time = moment.tz(global.timezone).format('HH')
-      let res = `Don't forget to sleep`
-      if (time >= 3) res = `Good Evening`
-      if (time > 8) res = `Good Morning`
-      if (time >= 15) res = `Good Afternoon`
-      if (time >= 18) res = `Good Night`
+   greeting = (name) => {
+      let time = moment.tz('Asia/Jakarta').format('HH')
+      let res = "Jangan lupa tidur kak"
+      if (time >= 4) {
+         res = `Selamat Pagi ${name}`
+      }
+      if (time > 10) {
+         res = `Selamat Siang ${name}`
+      }
+      if (time >= 15) {
+         res = `Selamat Sore ${name}`
+      }
+      if (time >= 18) {
+         res = `Selamat Malam ${name}`
+      }
       return res
    }
 }
