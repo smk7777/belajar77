@@ -222,7 +222,7 @@ Socket = (...args) => {
                body: '',
                description: 'melbot',
                showAdAttribution: true,
-               thumbnail: fs.readFileSync('./media/images/mel.jpg'),
+               thumbnail: fs.readFileSync('./media/image/thumb.jpg'),
                sourceUrl: 'https://chat.whatsapp.com/L2hJAaHZYPHHkcjFsBr3vE'
             }
          }
