@@ -29,13 +29,6 @@ exports.run = {
                 type: 1
             },
             {
-                 buttonId: `${isPrefix}dnsiii`,
-                 buttonText: {
-                    displayText: 'DONASI'
-            },
-            type: 1
-            },
-            {
                  buttonId: `${isPrefix}sc`,
                  buttonText: {
                     displayText: 'SCRIPT'
