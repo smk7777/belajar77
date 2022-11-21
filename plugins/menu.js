@@ -15,7 +15,7 @@ exports.run = {
             try {
                pic = await Func.fetchBuffer(await client.profilePictureUrl(m.sender, 'image'))
             } catch {
-               pic = await Func.fetchBuffer('./media/images/thumb.jpg')
+               pic = await Func.fetchBuffer('./media/image/thumb.jpg')
             }
             if (!isOwner && (id in client.menu)) {
                global.db.statistic[command].hitstat -= 1
