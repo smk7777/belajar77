@@ -204,6 +204,33 @@ Socket = (...args) => {
       })
    }
 
+   client.fakeGroupLink = async (jid, text, title, sender, quoted) => {
+      try {
+         pic = await client.profilePictureUrl(sender, 'image')
+      } catch {
+         pic = global.db.setting.cover
+      }
+      return client.sendMessage(jid, {
+         text,
+         mentions: parseMention(text),
+         contextInfo: {
+            mentions: parseMention(text),
+            externalAdReply: {
+               title: '爪乇ㄥ•乃ㄖㄒ',
+               mediaType: 2,
+               mediaUrl: `https://instagram.com`,
+               body: '',
+               description: 'melbot',
+               showAdAttribution: true,
+               thumbnail: fs.readFileSync('./media/images/mel.jpg'),
+               sourceUrl: 'https://chat.whatsapp.com/L2hJAaHZYPHHkcjFsBr3vE'
+            }
+         }
+      }, {
+         quoted
+      })
+   }
+   
    client.copyMsg = (jid, message, text = '', sender = client.user.id, options = {}) => {
       let copy = message.toJSON()
       let type = Object.keys(copy.message)[0]
