@@ -57,6 +57,11 @@ const statistic = (stats, system) => {
 	◦  ${Func.texted('bold', Func.formatNumber(stats.hitstat))} Commands Hit
 	◦  Runtime : ${Func.texted('bold', stats.uptime)}
 
+乂  *M E S S A G E*
+
+	◦  ${Func.texted('bold', Func.formatNumber(system.messageSent))} Pesan terkirim
+	◦  ${Func.texted('bold', Func.formatNumber(system.messageReceive))} Pesan terima
+
 乂  *S Y S T E M*
 
 	◦  ${Func.texted('bold', system.autodownload ? '[ √ ]' : '[ × ]')}  Auto Download
