@@ -1,7 +1,9 @@
 exports.run = {
    usage: ['tqto', 'thanksto', 'tnc'],
    async: async (m, {
-      client
+      client,
+      args,
+      command
    }) => {
       if (command == 'tqto' || command == 'thanksto') return client.reply(m.chat, info(), m)
       if (command == 'tnc') return client.sendMessageModify(m.chat, tnc(), m, {
@@ -33,21 +35,21 @@ let info = () => {
 }
 
 const tnc = () => {
-   return `➠ User, group, and chat data will be deleted automatically if no activity is detected for 7 days (reason: database cleaning).
+   return `➠ User, group, dan data chat akan terhapus secara otomatis jika tidak terdeteksi aktivitas selama 7 hari (reason: database cleaning).
 
-➠ Free users get ${global.limit} / day and will reset automatically at 00.00.
+➠ Pengguna gratis dapatkan ${global.limit} per hari dan akan diatur ulang secara otomatis pada 00.00.
 
-➠ Don't spam, pause each command usage for ${global.cooldown} seconds.
+➠ Jangan spam, jeda setiap penggunaan perintah ${global.cooldown} detik.
 
-➠ Do not make voice or video calls (Telephone & Video Calls), if you do it will be blocked.
+➠ Jangan melakukan panggilan suara atau video (Telephone & Video Calls), jika Anda melakukannya akan diblokir.
 
-➠ Don't be toxic to bots because you will get sanctions in the form of being banned and blocked.
+➠ Jangan toxic bot karena kalian akan mendapatkan sanksi berupa banned dan block.
 
-➠ Don't search & create adult content (+18), eg: make stickers from nude photos or search for ASMR sighs.
+➠ Jangan mencari & membuat konten dewasa (+18), eg: buat stiker dari foto bugil atau cari desahan ASMR.
 
-➠ If you want to unblock and unbanned, each will be charged a fee of Rp. 5,000,-
+➠ Jika ingin membuka blokir dan unbanned, masing-masing akan dikenakan biaya sebesar Rp. 5.000,-
 
-➠ Spammers will be permanently banned for free and premium users (+ no refund).
+➠ Spammer akan secara permanen dibanned berlaku untuk pengguna gratis dan premium (+ tidak ada pengembalian uang).
 
-➠ All Terms & Conditions are subject to change at any time without prior notice.`
+➠ Semua Syarat & Ketentuan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya.`
 }
