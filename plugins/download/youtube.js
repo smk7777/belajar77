@@ -12,7 +12,7 @@ exports.run = {
       try {
          if (!args || !args[0]) return client.reply(m.chat, Func.example(isPrefix, command, 'https://youtu.be/zaRFmdtLhQ8'), m)
          if (!/^(?:https?:\/\/)?(?:www\.|m\.|music\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/.test(args[0])) return client.reply(m.chat, global.status.invalid, m)
-         client.sendReact(m.chat, '🕒', m.key)
+         client.reply(m.chat, global.status.getdata, m)
          if (/yt?(a|mp3)/i.test(command)) {
             const json = await Func.fetchJson('https://yt.nxr.my.id/yt2?url=' + args[0] + '&type=audio')
             if (!json.status || !json.data.url) return client.reply(m.chat, global.status.fail, m)
