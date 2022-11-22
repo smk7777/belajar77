@@ -63,7 +63,7 @@ exports.run = {
                ]
             } else if (menuType == 2) {
                client.menu[id] = [
-                  await client.sendButton(m.chat, global.db.setting.cover, await menu(m, readmore, global.db.setting, isPrefix), '                       © 𝙸'𝚖 𝙰𝚌𝚞𝚢', null, button, {
+                  await client.sendButton(m.chat, global.db.setting.cover, await menu(m, readmore, global.db.setting, isPrefix), '                       © 𝙸𝚖 𝙰𝚌𝚞𝚢', null, button, {
                     document: true
             }, {
                 title: global.botname,
@@ -76,7 +76,7 @@ exports.run = {
                ]
             } else if (menuType == 3) {
                client.menu[id] = [
-                  await client.sendTemplateButton(m.chat, global.db.setting.cover, await menu(m, readmore, global.db.setting, isPrefix), '                       © 𝙸'𝚖 𝙰𝚌𝚞𝚢', buttons, {
+                  await client.sendTemplateButton(m.chat, global.db.setting.cover, await menu(m, readmore, global.db.setting, isPrefix), '                       © 𝙸𝚖 𝙰𝚌𝚞𝚢', buttons, {
                      document: true,
                      name: '𝘞𝘩𝘢𝘵𝘴𝘈𝘱𝘱 𝘉𝘰𝘵'
                   }),
