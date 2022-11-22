@@ -18,7 +18,7 @@ exports.run = {
                      users.limit -= limit
                   } else return client.reply(m.chat, Func.texted('bold', `🚩 Your limit is not enough to use this feature.`), m)
                }
-               client.sendReact(m.chat, '🕒', m.key)
+               client.reply(m.chat, global.status.autodl, m)
                Func.hitstat('podcast', m.sender)
                links.map(async link => {
                   let json = await Api.podcast(link)
