@@ -18,7 +18,7 @@ exports.run = {
                      users.limit -= limit
                   } else return client.reply(m.chat, Func.texted('bold', `🚩 Your limit is not enough to use this feature.`), m)
                }
-               client.sendReact(m.chat, '🕒', m.key)
+               client.reply(m.chat, global.status.autodl, m)
                let old = new Date()
                Func.hitstat('igs', m.sender)
                links.map(async link => {
