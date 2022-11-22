@@ -19,7 +19,7 @@ exports.run = {
                      users.limit -= limit
                   } else return client.reply(m.chat, Func.texted('bold', `🚩 Your limit is not enough to use this feature.`), m)
                }
-               client.reply(m.chat, global.status.getdata, m)
+               client.reply(m.chat, global.status.autodl, m)
                let old = new Date()
                Func.hitstat('tiktok', m.sender)
                links.map(async link => {
