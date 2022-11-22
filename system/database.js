@@ -130,8 +130,6 @@ module.exports = (m) => {
          autodownload: true,
          chatbot: true,
          debug: false,
-         messageSent: 10,      
-         messageReceive: 10,
          error: [],
          pluginDisable: [],
          groupmode: false,
