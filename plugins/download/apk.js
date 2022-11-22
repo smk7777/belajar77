@@ -13,7 +13,7 @@ exports.run = {
       try {
          if (command == 'apk') {
             if (!text) return client.reply(m.chat, Func.example(isPrefix, command, 'fb lite'), m)
-            client.sendReact(m.chat, '🕒', m.key)
+            client.reply(m.chat, global.status.getdata, m)
             let json = await Api.apk(text)
             if (!json.status) return client.reply(m.chat, global.status.fail, m)
             let rows = []
@@ -30,7 +30,7 @@ exports.run = {
          } else if (command == 'getapk') {
             if (!text) return client.reply(m.chat, global.status.invalid, m)
             let [query, no] = text.split`—`
-            client.sendReact(m.chat, '🕒', m.key)
+            client.reply(m.chat, global.status.getdata, m)
             let json = await Api.apk(query, no)  
             let teks = `乂  *P L A Y S T O R E*\n\n`
             teks += '	◦  *Name* : ' + json.data.name + '\n'
