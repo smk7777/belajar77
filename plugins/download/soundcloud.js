@@ -11,7 +11,7 @@ exports.run = {
    }) => {
       try {
          if (!text) return client.reply(m.chat, `• ${Func.texted('bold', `Example`)} :\n\n${isPrefix + command} tak ingin usai\n${isPrefix + command} https://soundcloud.com/cipilatoz/keisya-levronka-tak-ingin-usai`, m)
-         client.sendReact(m.chat, '🕒', m.key)
+         client.reply(m.chat, global.status.getdata, m)
          const json = await Api.soundcloud(text)
          if (!json.status) return client.reply(m.chat, global.status.fail, m)
          if (text.match('soundcloud.com')) return client.sendFile(m.chat, json.data.url, json.data.title + '.mp3', '', m, {
