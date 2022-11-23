@@ -14,6 +14,7 @@ module.exports = (m) => {
       if (!isNumber(user.banTimes)) user.banTimes = 0
       if (!isNumber(user.limit)) user.limit = global.limit
       if (!('premium' in user)) user.premium = false
+      if (!isNumber(user.guard)) user.guard = 0
       if (!isNumber(user.lastclaim)) user.lastclaim = 0
       if (!isNumber(user.expired)) user.expired = 0
       if (!isNumber(user.uang)) user.uang = 0
@@ -35,6 +36,7 @@ module.exports = (m) => {
          banTimes: 0,
          limit: global.limit,
          premium: false,
+         guard: 0,
          lastclaim: 0,
          expired: 0,
          uang: 0,
