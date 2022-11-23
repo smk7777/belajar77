@@ -29,7 +29,9 @@ exports.run = {
                rowId: `${isPrefix}panel2 ${Number(json.page) + 1}`,
                description: ``
             })
-            client.sendList(m.chat, '', `Berikut ini adalah daftar layanan yang bisa kamu beli, Halaman : *${page}*,  Total Halaman : *${json.total_pages}*`, '', 'Tap!', rows, m)
+            client.sendList(m.chat, '', `Berikut ini adalah daftar layanan yang bisa kamu beli, Halaman : *${page}*,  Total Halaman : *${json.total_pages}*`, '', 'Tap!',  [{
+               rows
+            }], m)
          } else if (command == 'service2') {
             if (!args || !args[0]) return
             const json = await panel.layananAll()
