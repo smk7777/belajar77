@@ -14,17 +14,17 @@ exports.run = {
          if (isNaN(args[0])) return client.reply(m.chat, Func.example(isPrefix, command, '1'), m)
          if (args[0] < 1) return client.reply(m.chat, Func.example(isPrefix, command, '1'), m)
          let price = (command == 'buyguard') ? 1555555 : 150000
-         if (user.point >= price * parseInt(args[0])) {
+         if (user.uang >= price * parseInt(args[0])) {
             if (command == 'buyguard') {
                if ((user.guard + parseInt(args[0])) >= maximum) return client.reply(m.chat, Func.texted('bold', `Jumlah guard yang kamu beli melebihi batas maximum.`), m)
-               user.point -= price * parseInt(args[0])
+               user.uang -= price * parseInt(args[0])
                user.guard += parseInt(args[0])
             } else {
                if ((user.limit + parseInt(args[0])) >= maximum) return client.reply(m.chat, Func.texted('bold', `Jumlah limit yang kamu beli melebihi batas maximum.`), m)
-               user.point -= price * parseInt(args[0])
+               user.uang -= price * parseInt(args[0])
                user.limit += parseInt(args[0])
             }
-            return client.reply(m.chat, `Kamu telah membeli *${args[0]}* ${command == 'buyguard' ? 'guard' : 'limit'} dengan *${Func.h2k(price * args[0])}* point.`, m)
+            return client.reply(m.chat, `Kamu telah membeli *${args[0]}* ${command == 'buyguard' ? 'guard' : 'limit'} dengan *${Func.h2k(price * args[0])}* uang.`, m)
          } else {
             client.reply(m.chat, Func.texted('bold', `Saldo yang kamu miliki tidak mencukupi untuk membeli ${Func.formatNumber(args[0])} ${command == 'buyguard' ? 'guard' : 'limit'}.`), m)
          }
