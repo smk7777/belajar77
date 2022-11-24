@@ -35,8 +35,8 @@ exports.run = {
          } else if (command == 'service') {
             if (!args || !args[0]) return
             const json = await panel.layananAll()
-            if (!json.status) return client.reply(m.chat, Func.jsonFormat(json), m)
-            const p = json.data.find(v => v.service == args[0])
+            if (json.length == 0) return client.reply(m.chat, Func.jsonFormat(json), m)
+            const p = json.find(v => v.service == args[0])
             let teks = `乂  *D E T A I L*\n\n`
             teks += `	◦ *Nama* : ${p.name}\n`
             teks += `	◦ *Harga* : Rp. ${Func.formatNumber(p.rate.split('.')[0])}\n`
